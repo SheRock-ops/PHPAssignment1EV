@@ -6,30 +6,31 @@
 
 <html>
 
-  <head>
+    <head>
 
-    <title>Contact Manager - Database Error</title>
+        <title>Contact Manager - Database Error</title>
+        <link rel="stylesheet" type="text/css" href="css/contact.css" />
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-    <h1>Contact Manager System</h1>
+        <?php include("header.php"); ?>
 
-    <main>
+        <main>
 
-        <h2>Database Error</h2>
-        <p> There was an error connecting to the database.</p>
-        <p> The database must be installed.</p>
-        <p> MySQL must be running.</p>
-        <p> Error Message: <?php echo isset($_SESSION["database_error"]) ? htmlspecialchars($_SESSION["database_error"]) : "Unknown database error."; ?></p>
+            <h2>Database Error</h2>
+            <p>There was an eror connecting to the database.</p>
+            <p>The database must be installed.</p>
+            <p>MySQL must be running.</p>
+            <p>Error Message: <?php echo $_SESSION["database_error"]; ?></p>
 
-        <p><a href="index.php">View Contact</a></p>
+            <p><a href="index.php">View Contact List</a></p>
 
-    </main>
+        </main>
 
-    <h2>Copyright &copy; 2026 - All Rights Reserved</h2>
-    
-  </body>
+        <?php include("footer.php"); ?>
+
+    </body>
 
 </html>

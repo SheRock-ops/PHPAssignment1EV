@@ -1,4 +1,41 @@
 
+
+/* =========================================
+   CONTACT MANAGER SYSTEM
+   PREMIUM NAVY & GOLD EDITION
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+:root {
+    --navy: #101e36;
+    --navy-light: #1b3354;
+    --navy-dark: #091426;
+
+    --gold: #d6ad54;
+    --gold-light: #f5dfa5;
+    --gold-dark: #a77c2c;
+
+    --background: #edf2f8;
+    --white: #ffffff;
+    --text: #25364e;
+    --muted: #718096;
+
+    --border: #e2e8f0;
+
+    --shadow:
+        0 15px 45px rgba(16, 30, 54, 0.10);
+
+    --shadow-hover:
+        0 25px 60px rgba(16, 30, 54, 0.18);
+
+    --radius: 16px;
+}
+
 /* =========================================
    GENERAL PAGE STYLING
 ========================================= */
@@ -7,12 +44,38 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #eef2f7, #dce5f0);
-    color: #263445;
+    font-family: 'DM Sans', Arial, sans-serif;
+
     margin: 0;
     padding: 30px 20px;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(214, 173, 84, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(36, 76, 130, 0.12),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #f7f9fc,
+            #e6edf6
+        );
+
+    background-attachment: fixed;
+
+    color: var(--text);
     line-height: 1.6;
 }
 
@@ -22,15 +85,23 @@ body {
 
 main {
     display: block;
+
     width: 100%;
-    max-width: 1050px;
-    margin: 30px auto;
-    padding: 35px;
-    background: #ffffff;
-    border: none;
-    border-top: 5px solid #c9a227;
-    border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(20, 39, 65, 0.10);
+    max-width: 1250px;
+
+    margin: 35px auto;
+    padding: 45px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-top: 5px solid var(--gold);
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow);
+
+    animation: fadeUp 0.6s ease both;
 }
 
 /* =========================================
@@ -38,84 +109,212 @@ main {
 ========================================= */
 
 h1 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: #142b4a;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
+    font-family: 'Playfair Display', Georgia, serif;
 
-h2 {
-    color: #142b4a;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 700;
+
+    color: var(--navy);
     text-align: center;
-    font-size: 25px;
-    margin-top: 0;
-    margin-bottom: 25px;
+
+    margin: 0 0 30px;
+
+    letter-spacing: -0.8px;
 }
 
 h1::after {
     content: "";
+
     display: block;
-    width: 65px;
+
+    width: 85px;
     height: 4px;
+
+    margin: 15px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light),
+        var(--gold-dark)
+    );
+
+    border-radius: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    color: var(--navy);
+    text-align: center;
+
+    margin: 0 0 30px;
+}
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 3px;
+
     margin: 12px auto 0;
-    background: #c9a227;
+
+    background: var(--gold);
+
     border-radius: 10px;
 }
 
 /* =========================================
-   CONTACT CARD
+   CONTACT DETAILS CARD
 ========================================= */
 
 .container {
-    max-width: 650px;
     width: 100%;
+    max-width: 680px;
+
     margin: 30px auto;
-    padding: 35px;
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(20, 39, 65, 0.12);
+    padding: 45px 40px;
+
     text-align: center;
-    border: 1px solid #e5eaf1;
-    transition: box-shadow 0.3s ease;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f9fbfe
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        var(--navy),
+        var(--gold),
+        var(--navy)
+    );
 }
 
 .container:hover {
-    box-shadow: 0 16px 40px rgba(20, 39, 65, 0.16);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 .container h2 {
-    margin-bottom: 25px;
-    color: #142b4a;
+    font-size: 29px;
+    margin-bottom: 30px;
 }
 
 /* =========================================
-   CONTACT IMAGE AND INFORMATION
+   CONTACT DETAILS PROFILE IMAGE
+   FULL IMAGE - NO CROPPING
 ========================================= */
 
 .contact-image {
     display: block;
+
+    width: 350px;
     max-width: 100%;
-    height: auto;
-    margin: 0 auto 25px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(20, 39, 65, 0.12);
+    height: 400px;
+
+    margin: 0 auto 30px;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #f4f7fb;
+
+    border: 5px solid var(--white);
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 0 2px rgba(214, 173, 84, 0.5),
+        0 15px 35px rgba(16, 30, 54, 0.18);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
+.contact-image:hover {
+    transform: scale(1.025);
+
+    box-shadow:
+        0 0 0 3px var(--gold),
+        0 20px 45px rgba(16, 30, 54, 0.25);
+}
+
+/* =========================================
+   CONTACT INFORMATION
+========================================= */
+
 .contact-info {
-    text-align: center;
-    color: #46566b;
-    font-size: 16px;
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 25px;
+
+    background: #f5f8fc;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    text-align: left;
 }
 
 .contact-info p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #46566b;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: baseline;
+
+    gap: 15px;
+
+    margin: 0;
+    padding: 13px 5px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 15px;
+    color: var(--text);
+
     overflow-wrap: anywhere;
+}
+
+.contact-info p:last-child {
+    border-bottom: none;
+}
+
+.contact-info strong {
+    color: var(--navy);
+    font-weight: 800;
+
+    flex-shrink: 0;
 }
 
 /* =========================================
@@ -124,66 +323,258 @@ h1::after {
 
 .back-link {
     display: inline-block;
-    margin-top: 25px;
-    padding: 12px 24px;
-    background: #142b4a;
-    color: #ffffff;
+
+    margin-top: 30px;
+    padding: 13px 28px;
+
+    background: linear-gradient(
+        135deg,
+        var(--navy),
+        var(--navy-light)
+    );
+
+    color: var(--white);
+
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    border: 2px solid #142b4a;
-    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    border: 1px solid var(--navy);
+    border-radius: 10px;
+
+    box-shadow:
+        0 6px 15px rgba(16, 30, 54, 0.18);
+
     transition: all 0.3s ease;
 }
 
 .back-link:hover {
-    background: #c9a227;
-    border-color: #c9a227;
-    color: #142b4a;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(201, 162, 39, 0.25);
+    background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    color: var(--navy);
+    border-color: var(--gold);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(214, 173, 84, 0.35);
 }
 
 /* =========================================
-   TABLE DESIGN
+   CONTACT TABLE
 ========================================= */
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    margin: 30px 0;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(16, 30, 54, 0.06);
 }
+
+/* =========================================
+   TABLE HEADERS
+========================================= */
 
 th {
-    padding: 15px 12px;
-    background: #142b4a;
-    color: #ffffff;
-    font-size: 14px;
+    padding: 18px 12px;
+
+    background: var(--navy);
+    color: var(--gold-light);
+
+    font-size: 12px;
+    font-weight: 800;
+
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border: 1px solid #243d5e;
+    letter-spacing: 0.6px;
+
     text-align: center;
+    line-height: 1.5;
+
+    border-bottom: 3px solid var(--gold);
 }
+
+th:first-child {
+    border-top-left-radius: 13px;
+}
+
+th:last-child {
+    border-top-right-radius: 13px;
+}
+
+/* =========================================
+   TABLE DATA
+========================================= */
 
 td {
-    padding: 13px 12px;
-    border: 1px solid #e0e6ee;
-    color: #344256;
+    padding: 16px 12px;
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 500;
+
     text-align: center;
     vertical-align: middle;
+
+    border-bottom: 1px solid var(--border);
+
     overflow-wrap: anywhere;
+
+    transition: background 0.25s ease;
 }
 
-tr:nth-child(even) {
+tr:nth-child(even) td {
+    background: #f7f9fd;
+}
+
+tr:hover td {
+    background: #fff8e9;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 13px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 13px;
+}
+
+/* =========================================
+   CONTACT TABLE PROFILE PHOTOS
+   FULL IMAGE - NO CROPPING
+========================================= */
+
+table td img {
+    display: block;
+
+    width: 100px;
+    height: 120px;
+
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    /* Display the entire image */
+    object-fit: contain;
+    object-position: center;
+
     background: #f4f7fb;
+
+    border: 3px solid var(--white);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 0 1px #e4e9f1,
+        0 5px 15px rgba(16, 30, 54, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-tbody tr:hover {
-    background: #fff8e4;
-    transition: background 0.2s ease;
+table td img:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 0 2px var(--gold),
+        0 10px 25px rgba(16, 30, 54, 0.2);
+}
+
+/* =========================================
+   TABLE ACTION BUTTONS
+========================================= */
+
+table form {
+    margin: 0;
+}
+
+table input[type="submit"] {
+    display: inline-block;
+
+    padding: 9px 13px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+/* UPDATE BUTTON */
+
+table td:nth-last-child(3)
+input[type="submit"] {
+    background: #e8f1ff;
+    color: #185abc;
+}
+
+table td:nth-last-child(3)
+input[type="submit"]:hover {
+    background: #185abc;
+    color: var(--white);
+}
+
+/* DELETE BUTTON */
+
+table td:nth-last-child(2)
+input[type="submit"] {
+    background: #ffebeb;
+    color: #c62828;
+}
+
+table td:nth-last-child(2)
+input[type="submit"]:hover {
+    background: #c62828;
+    color: var(--white);
+}
+
+/* VIEW DETAILS BUTTON */
+
+table td:last-child
+input[type="submit"] {
+    background: var(--navy);
+    color: var(--white);
+}
+
+table td:last-child
+input[type="submit"]:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+table input[type="submit"]:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(16, 30, 54, 0.15);
 }
 
 /* =========================================
@@ -192,12 +583,17 @@ tbody tr:hover {
 
 label {
     display: block;
+
     width: 15em;
     float: left;
+
     padding-right: 2em;
     padding-bottom: 1em;
-    color: #263b56;
-    font-weight: 600;
+
+    color: var(--navy);
+
+    font-size: 14px;
+    font-weight: 700;
 }
 
 /* =========================================
@@ -208,65 +604,158 @@ label {
 #data select,
 #data textarea {
     float: left;
+
     width: 25em;
     max-width: 100%;
+
     margin-bottom: 1em;
-    padding: 12px 14px;
+    padding: 13px 15px;
+
     font-family: inherit;
-    font-size: 15px;
-    color: #263445;
+    font-size: 14px;
+
+    color: var(--text);
     background: #f8fafc;
+
     border: 1px solid #cbd5e1;
-    border-radius: 7px;
+    border-radius: 9px;
+
     outline: none;
-    transition: border-color 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
 #data input:focus,
 #data select:focus,
 #data textarea:focus {
-    background: #ffffff;
-    border-color: #c9a227;
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.18);
+    background: var(--white);
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 4px rgba(214, 173, 84, 0.17);
+}
+
+/* =========================================
+   IMAGE UPLOAD INPUT
+========================================= */
+
+#data input[type="file"] {
+    padding: 10px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+}
+
+#data input[type="file"]::file-selector-button {
+    padding: 8px 13px;
+    margin-right: 12px;
+
+    background: var(--navy);
+    color: var(--white);
+
+    border: none;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
 }
 
 #data span {
     display: inline-block;
+
     padding: 1em;
-    color: #46566b;
+
+    color: var(--muted);
 }
 
 /* =========================================
-   FORM BUTTONS
+   MAIN FORM BUTTONS
 ========================================= */
 
 #buttons {
     clear: both;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 #buttons input {
     float: left;
-    margin: 0 10px 12px 0;
-    padding: 12px 25px;
-    background: #142b4a;
-    color: #ffffff;
+
+    margin: 0 12px 12px 0;
+    padding: 13px 28px;
+
+    background: linear-gradient(
+        135deg,
+        var(--navy),
+        var(--navy-light)
+    );
+
+    color: var(--white);
+
     font-family: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    border: 2px solid #142b4a;
-    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 9px;
+
     cursor: pointer;
+
+    box-shadow:
+        0 6px 16px rgba(16, 30, 54, 0.18);
+
     transition: all 0.3s ease;
 }
 
 #buttons input:hover {
-    background: #c9a227;
-    color: #142b4a;
-    border-color: #c9a227;
-    transform: translateY(-2px);
+    background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    color: var(--navy);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 22px rgba(214, 173, 84, 0.3);
+}
+
+/* =========================================
+   GENERAL LINKS
+========================================= */
+
+main a:not(.back-link) {
+    color: #a47a27;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+main a:not(.back-link):hover {
+    color: var(--navy);
+    text-decoration: underline;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
 }
 
 /* =========================================
@@ -286,34 +775,92 @@ main::after,
 }
 
 /* =========================================
-   RESPONSIVE DESIGN
+   PAGE ANIMATION
+========================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - TABLETS
+========================================= */
+
+@media screen and (max-width: 1100px) {
+
+    main {
+        padding: 28px 22px;
+    }
+
+    table {
+        display: block;
+
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+    }
+
+    table td img {
+        width: 85px;
+        height: 105px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE
 ========================================= */
 
 @media screen and (max-width: 768px) {
+
     body {
         padding: 15px;
     }
 
     main {
-        padding: 22px 16px;
-        margin: 15px auto;
-    }
-
-    .container {
+        margin: 20px auto;
         padding: 25px 18px;
+
+        border-radius: 15px;
     }
 
     h1 {
-        font-size: 27px;
+        font-size: 30px;
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 23px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        margin: 20px auto;
+    }
+
+    .contact-image {
+        width: 280px;
+        height: 340px;
+    }
+
+    .contact-info {
+        padding: 18px;
     }
 
     label {
         float: none;
         width: 100%;
+
         padding-right: 0;
         padding-bottom: 5px;
     }
@@ -323,6 +870,7 @@ main::after,
     #data textarea {
         float: none;
         display: block;
+
         width: 100%;
         max-width: 100%;
     }
@@ -333,30 +881,59 @@ main::after,
     }
 
     table {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     th,
     td {
-        padding: 9px 6px;
+        padding: 10px 8px;
+    }
+
+    table td img {
+        width: 85px;
+        height: 105px;
     }
 }
 
+/* =========================================
+   RESPONSIVE DESIGN - SMALL PHONES
+========================================= */
+
 @media screen and (max-width: 480px) {
+
     body {
         padding: 10px;
     }
 
     main {
-        padding: 18px 12px;
-    }
-
-    .container {
-        padding: 20px 14px;
+        padding: 20px 12px;
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .contact-image {
+        width: 220px;
+        height: 280px;
+    }
+
+    .contact-info p {
+        display: block;
+        text-align: center;
+    }
+
+    .contact-info strong {
+        display: block;
+        margin-bottom: 3px;
     }
 
     table {
@@ -365,7 +942,12 @@ main::after,
 
     th,
     td {
-        padding: 7px 4px;
+        padding: 9px 7px;
+    }
+
+    table td img {
+        width: 75px;
+        height: 95px;
     }
 
     #buttons input {
@@ -378,3 +960,19 @@ main::after,
         text-align: center;
     }
 }
+
+/* =========================================
+   REDUCED MOTION SUPPORT
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+

@@ -1,10 +1,21 @@
+
 <?php
+    session_start();
+
+    if (empty($_SESSION['isLoggedIn']) || empty($_SESSION['userID']))
+    {
+        header("Location: login_form.php");
+        die();
+    }
+
     require("database.php");
 
     $queryContacts = "SELECT c.contactID, c.firstName, c.lastName, c.emailAddress, c.phoneNumber, c.dob, 
-        c.typeID, c.imageName, t.contactType FROM contacts c LEFT JOIN types t ON c.typeID = t.typeID";
+        c.typeID, c.imageName, c.userID, t.contactType FROM contacts c LEFT JOIN types t ON c.typeID = t.typeID 
+        WHERE c.userID = :userID";
 
     $statement = $db->prepare($queryContacts);
+    $statement->bindValue(':userID', $_SESSION['userID']);
     $statement->execute();
     $contacts = $statement->fetchAll();
     $statement->closeCursor();
@@ -55,7 +66,7 @@
                         <td><?php echo htmlspecialchars($contact['emailAddress']); ?></td>
                         <td><?php echo htmlspecialchars($contact['phoneNumber']); ?></td>
                         <td><?php echo htmlspecialchars($contact['dob']); ?></td>
-                        <td><?php echo htmlspecialchars($contact['contactType']); ?></td>
+                        <td><?php echo htmlspecialchars($contact['contactType'] ?? ''); ?></td>
 
                         <td>
                             <img src="<?php echo htmlspecialchars('./images/' . $contact['imageName']); ?>"
@@ -93,12 +104,14 @@
             <p><a href="add_contact_form.php">Add Contact</a></p>
 
             <!-- temporary link to the register user form for testing purposes -->
-            <p><a href="register_user_form.php">Register User - Temporary</a></p>
+            <!-- <p><a href="register_user_form.php">Register User - Temporary</a></p> -->
 
             <!-- temporary link to the login form for testing purposes -->
-            <p><a href="login_form.php">Login - Temporary</a></p>
+            <!-- <p><a href="login_form.php">Login - Temporary</a></p> -->
             
             <p><a href="logout.php">Logout</a></p>
+
+            <p>Current Logged In User: <?php echo htmlspecialchars($_SESSION['userName'] ?? ''); ?> </p>
 
         </main>
 

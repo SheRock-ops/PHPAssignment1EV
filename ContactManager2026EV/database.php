@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $dsn = 'mysql:host=localhost;dbname=contact_manager_2026_ev';
+    $dsn = 'mysql:host=localhost;dbname=contact_manager_2026ev';
     $username = 'root';
     $password = '';
 
